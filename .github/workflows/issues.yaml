@@ -1,30 +1,8 @@
-name: Deployment Exercise 2
-on: push
+name: Handle Issues
+on: issues
 jobs:
-  lint:
+  output-info:
     runs-on: ubuntu-latest
     steps:
-      - name: Get Code
-        uses: actions/checkout@v3
-      - name: Install dependencies
-        run: npm ci
-      - name: Lint
-        run: npm run lint
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get Code
-        uses: actions/checkout@v3
-      - name: Install dependencies
-        run: npm ci
-      - name: Test code
-        run: npm test
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get Code
-        uses: actions/checkout@v3
-      - name: Install dependencies
-        run: npm ci
-      - name: Deploy Code
-        run: echo "Deploying..."
+      - name: Output event detaisls
+        run: echo "${{ toJson(github.event) }}"
